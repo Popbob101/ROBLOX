@@ -1,0 +1,53 @@
+pcall(function()
+   local LocalPlayer = game.Players.LocalPlayer
+   local Workspace = game:GetService("Workspace")
+   local ReplicatedStorage = game:GetService("ReplicatedStorage")
+   local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+   local RunService = game:GetService("RunService")
+   local Click = true
+   local Keybind = "x"
+   local KeyPressed = false
+
+   Mouse.KeyDown:Connect(function(Key)
+       if Key == Keybind and not KeyPressed then
+           KeyPressed = true
+           Click = not Click
+       end
+   end)
+
+   Mouse.KeyUp:Connect(function(Key)
+       if Key == Keybind then
+           KeyPressed = false
+       end
+   end)
+   RunService.Stepped:Connect(function()
+   if Click then
+local args = {
+   [1] = 0.5,
+   [2] = CFrame.new(-262.56573486328125, 106.33491516113281, -140.74456787109375, -0.9982701539993286, 0.026753809303045273, -0.05235571041703224, 1.862645593320167e-09, 0.8904745578765869, 0.4550330638885498, 0.05879530310630798, 0.454245924949646, -0.8889340162277222),
+   [3] = {
+       ["4247588889"] = Vector3.new(830.6693725585938, 45.937530517578125, 255.84561157226562),
+       ["2240428031"] = Vector3.new(953.6641845703125, 35.165924072265625, 212.745849609375),
+       ["798527547"] = Vector3.new(779.2755737304688, 35.41107177734375, 213.56466674804688),
+       ["173304322"] = Vector3.new(645.1392822265625, 238.2598876953125, 88.94892120361328),
+       ["470401915"] = Vector3.new(1200.3228759765625, 77.72280883789062, 151.56097412109375),
+       ["4103278247"] = Vector3.new(815.7454833984375, 45.99102783203125, 256.10333251953125),
+       ["2586767652"] = Vector3.new(819.7306518554688, 40.060943603515625, 230.38270568847656),
+       ["1905425799"] = Vector3.new(815.3736572265625, 35.9771728515625, 215.47991943359375),
+       ["441434340"] = Vector3.new(807.6211547851562, 39.67584228515625, 228.8898162841797),
+       ["3427636918"] = Vector3.new(803.5510864257812, 36.595855712890625, 217.61224365234375),
+       ["4722420475"] = Vector3.new(842.57666015625, 34.35247802734375, 210.07342529296875),
+       ["4131368291"] = Vector3.new(675.4873657226562, 492.10650634765625, 31.49542236328125),
+       ["5003918477"] = Vector3.new(828.0732421875, 44.62420654296875, 249.67822265625)
+   },
+   [4] = {
+       [1] = 720,
+       [2] = 464
+   }
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ParryAttempt"):FireServer(unpack(args))
+
+   end
+   end)
+end)
